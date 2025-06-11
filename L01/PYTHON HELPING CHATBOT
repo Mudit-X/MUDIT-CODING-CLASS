@@ -1,0 +1,114 @@
+while True:
+    print("Hello! I'm your helping buddy for Python. I am your helping ChatBot.\n")
+    
+    name = input("What is your name? ")
+    print(f"Nice to meet you, {name}!\n")
+
+    # Display available topics
+    print("📚 I can help you with the following Python topics:")
+    print("  - Variables")
+    print("  - Loops")
+    print("  - Functions")
+    print("  - If Statements")
+    print("  - Input/Output")
+    print("  - Lists")
+    print("  - Dictionaries")
+    print("  - Strings\n")
+
+    # Ask the user for a topic
+    topic = input(f"What topic would you like help with, {name}? ").lower()
+
+    # Provide help based on the topic
+    if "variables" in topic:
+        print("\n📌 VARIABLES:")
+        print("➤ Variables store data and are created when a value is assigned.")
+        print("➤ Python doesn't require variable declarations beforehand.")
+        print("➤ Example:")
+        print("    x = 5")
+        print("    name = 'Alice'")
+        print("    pi = 3.14")
+
+    elif "loops" in topic:
+        print("\n📌 LOOPS:")
+        print("Python has two types of loops: 'for' loops and 'while' loops.")
+        loop = input("Which type of loop would you like help with? (for/while) ").lower()
+
+        if "while" in loop:
+            print("\n📌 WHILE LOOP:")
+            print("➤ A while loop repeats as long as the condition is true.")
+            print("➤ Example:")
+            print("    x = 1")
+            print("    while x <= 3:")
+            print("        print(x)")
+            print("        x += 1")
+            print("➤ Use 'break' to stop the loop or 'continue' to skip to the next iteration.")
+
+        elif "for" in loop:
+            print("\n📌 FOR LOOP:")
+            print("➤ A for loop is used to iterate over a sequence like a list or string.")
+            print("➤ Example:")
+            print("    fruits = ['apple', 'banana']")
+            print("    for fruit in fruits:")
+            print("        print(fruit)")
+
+        else:
+            print("\nSorry, I can only help with 'for' or 'while' loops.")
+
+    elif "functions" in topic:
+        print("\n📌 FUNCTIONS:")
+        print("➤ Functions help organize and reuse code.")
+        print("➤ Example:")
+        print("    def greet(name):")
+        print("        print(f'Hello, {name}!')")
+        print("    greet('Alice')")
+
+    elif "if" in topic or "conditions" in topic:
+        print("\n📌 IF STATEMENTS:")
+        print("➤ If statements are used for decision making.")
+        print("➤ Example:")
+        print("    age = 18")
+        print("    if age >= 18:")
+        print("        print('You are an adult')")
+        print("    else:")
+        print("        print('You are a minor')")
+
+    elif "input" in topic or "output" in topic:
+        print("\n📌 INPUT/OUTPUT:")
+        print("➤ Use input() to take user input.")
+        print("➤ Use print() to display output.")
+        print("➤ Example:")
+        print("    name = input('Enter your name: ')")
+        print("    print('Hello', name)")
+
+    elif "lists" in topic:
+        print("\n📌 LISTS:")
+        print("➤ Lists hold multiple items in one variable.")
+        print("➤ Example:")
+        print("    fruits = ['apple', 'banana', 'cherry']")
+        print("    print(fruits[0])  # prints 'apple'")
+
+    elif "dictionaries" in topic:
+        print("\n📌 DICTIONARIES:")
+        print("➤ Dictionaries store key-value pairs.")
+        print("➤ Example:")
+        print("    student = {'name': 'Alice', 'age': 12}")
+        print("    print(student['name'])  # prints 'Alice'")
+
+    elif "strings" in topic:
+        print("\n📌 STRINGS:")
+        print("➤ Strings are text values.")
+        print("➤ Example:")
+        print("    name = 'Alice'")
+        print("    print(name.upper())  # prints 'ALICE'")
+        print("    print(name[0])        # prints 'A'")
+
+    else:
+        print("\n❌ Sorry, I don't have help for that topic yet.")
+        print("Please choose a topic from the list above.\n")
+
+    # Ask if user wants to chat again
+    again = input("\nDo you want to chat again? (yes/no) ").strip().lower()
+    print()
+    if again != "yes":
+        print("👋 Thanks for chatting with me! Have a great day!")
+        break
