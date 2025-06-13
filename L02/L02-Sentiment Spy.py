@@ -48,10 +48,10 @@ def analyze_sentiment(text):
             positive_count += 1 #Increment positive couter
             return f"\n{Fore.GREEN} Positive sentiment detected, Agent {user_name}! (Score: {sentiment:.2f})" 
         elif -0.25 <= sentiment <= 0.25:
-            positive_count += 1 #Increment positive couter
+            neutral_count += 1 #Increment neutral couter
             return f"\n{Fore.GREEN} Neutral sentiment detected, Agent {user_name}! (Score: {sentiment:.2f})" 
         elif -0.75 <= sentiment < -0.25:
-            positive_count += 1 #Increment positive couter
+            negative_count += 1 #Increment negative couter
             return f"\n{Fore.GREEN} Negative sentiment detected, Agent {user_name}! (Score: {sentiment:.2f})" 
         else:
             negative_count = negative_count + 1 #Increment negative couter
@@ -70,9 +70,9 @@ def execute_command(command):
       """
       global conversation_history, positive_count, negative_count, neutral_count 
 
-      if command == "Summary":
+      if command == "summary":
         # Display a summary of sentiment analysis results
-        return (f"{Fore.Cyan} Mission Report:\n"
+        return (f"{Fore.CYAN} Mission Report:\n"
                 f"{Fore.GREEN} Positive messages detected: {positive_count}\n"
                 f"{Fore.RED} Negative messages detected: {negative_count}\n"
                 f"{Fore.YELLOW} Neutral messages detected: {neutral_count}\n")
@@ -85,7 +85,7 @@ def execute_command(command):
       
       elif command == "history":
         # Show all previous inputs and sentiments
-        return "\n".join([f"{Fore.CYAN} message {i+1}: {msg}" for i, in enumerate(conversation_history)])\
+        return "\n".join([f"{Fore.CYAN} message {i+1}: {msg}" for i, msg in enumerate(conversation_history)])\
             if conversation_history else f"{Fore.YELLOW} No conversation history available."
         
       elif command == "help":
@@ -131,16 +131,24 @@ def start_sentiment_chat():
 
     while True:
         # Get user input
-          # Handle empty input
-            
-              # Exit the program
-              # Display final summary
-            
-              # Handle special commands
-            
+        user_input = input(f"\n{Fore.MAGENTA}{Style.BRIGHT} Agent {user_name}: {Style.RESET_ALL}").strip()
+
+        if not user_input:# Handle empty input
+            print(f"{Fore.RED} Please enter a non-empty messaage or type 'help' for available commands.")
+            continue
+        
+        if user_input.lower() == 'exit': #Exit the program
+           print(f"\n{Fore.BLUE} 🔚Mission complete! Exiting Sentiment Spy. Farewell, Agent {user_name}!")
+           print(execute_command("summary"))# Display final summary
+           break
+        elif user_input.lower() in ["summary", "reset", "history", "help"]:# Handle special commands
+            print(execute_command(user_input.lower()))
+        else:
             # Simulate processing animation and analyze sentiment
-            
+            show_processing_animation()
+            result = analyze_sentiment(user_input)
+            print(result)
 
 # Entry point to run the program
 if __name__ == "__main__":
-    # Start the Sentiment Spy chat
+    start_sentiment_chat() # Start the Sentiment Spy chat
