@@ -9,7 +9,8 @@ init(autoreset=True)
 destinations = {
     "beaches": ["Bali", "Maldives", "Phuket"],
     "mountains": ["Swiss Alps", "Rocky Mountains", "Himalayas"],
-    #add cities
+    "cities" : ["New York", "Paris", "Dubai", "Tokyo", "London"],
+    "7 wonders of the world" : ["The Colosseum in Italy", "Petra in Jordan", "Chichén Itzá in Mexico", "Christ the Redeemer in Brazil", "Machu Picchu in Peru", "Taj Mahal in India", "The Great Wall of China"]
 }
 
 jokes = [
@@ -79,6 +80,9 @@ def offer_packing_tips():
     print(f"{Fore.GREEN}- Pack versatile clothing items.")
     print(f"{Fore.GREEN}- Don't forget travel adapters and chargers.")
     print(f"{Fore.GREEN}- Check the weather forecast before packing.")
+    print(f"{Fore.GREEN}- Coordinate Your Outfits for Maximum Versatility.")
+    print(f"{Fore.GREEN}- Bring comfortable walking shoes – Ones you’ve worn previously!.")
+    print(f"{Fore.GREEN}- Bring a refillable waterbottle.")
 
 # Function to tell a joke
 def tell_joke():
