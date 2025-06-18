@@ -71,7 +71,7 @@ def handle_ai(name):
     print(Fore.BLUE + "\n Let's find the perfect movie for you!\n")
 
     # Show genres in a single line
-    print(Fore.GREEN + "Availablel Generes: ", end="")
+    print(Fore.GREEN + "Availablel genres: ", end="")
     for idx, genere in enumerate(genres, 1):
         print(f"{Fore.CYAN}{idx}. {genre}")
     print() # To move to the next line after all genres are listed
