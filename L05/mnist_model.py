@@ -21,7 +21,7 @@ model.compile(optimizer='adam',
               metrics=['accuracy'])
 
 #Train the model
-model.fit(x_train, y_train, epochs=5)
+model.fit(x_train, y_train, epochs=2)
 
 #Evaluate the model
 test_loss, test_acc = model.evaluate(x_test, y_test)
@@ -31,6 +31,7 @@ print(f"Test accuracy: {test_acc}")
 predictions = model.predict(x_test)
 
 #Display the first image and prediction
-plt.imshow(x_test[0], cmap=plt.cm.binary)
-plt.title(f"Predicted: {predictions[0].argmax()}")
-plt.show()
+for i in range (10):
+    plt.imshow(x_test[i], cmap=plt.cm.binary)
+    plt.title(f"Predicted: {predictions[i].argmax()}")
+    plt.show()
