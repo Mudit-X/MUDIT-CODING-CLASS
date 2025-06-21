@@ -15,4 +15,3 @@ cv2.destroyAllWindows()# Close the window
 # Print image properties
 print(f"Image Dimensions: {image.shape}") # Height, Width, Channels
 
-
