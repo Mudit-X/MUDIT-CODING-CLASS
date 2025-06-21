@@ -77,10 +77,25 @@ def handle_ai(name):
     print() # To move to the next line after all genres are listed
 
     while True:
-    # Processing animation while analyzing mood 😊  😞  😐
+        genre_input = input(Fore.YELLOW + "Enter genre number or name: ").strip()
+        if genre_input.isdigit() and 1 <= int(genre_input) <= len(genres):
+            genre = genres[int(genre_input) - 1]
+            break
+        elif genre_input.title() in genres:
+            genre = genre_input.title()
+            break
+        print(Fore.RED + "Invalid input. Please try again.\n")
 
-        # Small processing animation during mood analysis
-    
+    mood = input(Fore.YELLOW + "How do you feel today? (Describe your mood): ").strip()
+          
+    # Processing animation while analyzing mood 😊  😞  
+    print(Fore.BLUE + "\nAnalyzing mood", end="", flush=True)
+    processing_animation() # Small processing animation during mood analysis
+    polarity = TextBlob(mood).sentiment.polarity
+    mood_desc = "positive 😊" if polarity > 0 else "negative " if polarity < 0 else "neutral "
+    print(f"\n{Fore.GREEN}Your mood is {mood_desc} {polarity:.2f}).\n")
+
+
     # Processing animation while finding movies
     
       # Small processing animation while finding movies 🎬🍿
