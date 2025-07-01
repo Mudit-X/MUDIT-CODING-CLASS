@@ -36,7 +36,7 @@ def recommend_movies(genre=None, mood=None, rating=None, top_n=5):
     if genre:
         filtered_df = filtered_df[filtered_df['Genre'].str.contains(genre, case=False, na=False)]
     if rating:
-        filtered_df = filtered_df[filtered_df['IMDB_Rating'] .= rating]
+        filtered_df = filtered_df[filtered_df['IMDB_Rating'].= rating]
 
     filtered_df = filtered_df.sample(frac=1).reset_index(drop=True) #Randomize the order
 
@@ -95,11 +95,42 @@ def handle_ai(name):
     mood_desc = "positive 😊" if polarity > 0 else "negative " if polarity < 0 else "neutral "
     print(f"\n{Fore.GREEN}Your mood is {mood_desc} {polarity:.2f}).\n")
 
+    while True:
+        rating_input = input(Fore.YELLOW + "Enter minimum IMDB rating (7.6 - 9.3) or 'skip' : ").strip()
+        if rating_input.lower() == 'skip':
+            rating = None
+            break
+        try:
+            rating = float(rating_input)
+            if 7.6 <= rating <= 9.3:
+                break
+            print(Fore.RED + "Invalid Input. Try Again.\n")
+        except ValueError:
+            print(Fore.RED + "Invalid Input. Try Again.\n")
 
     # Processing animation while finding movies
-    
-      # Small processing animation while finding movies 🎬🍿
+    print(f"{Fore.BLUE}\n Finding Movies for {name}", end="", flush=True)
+    processing_animation() # Small processing animation while finding movies 🎬🍿
 
+    recs = recommend_movies(genre, mood, rating)
+    if isinstance(recs, list):
+        print(Fore.RED + recs + "\n")
+    else:
+        display_recommendations(recs, name)
+
+    while True:
+        action == input(Fore.YELLOW + "\nWould you like more recommendations? (yes/no): ").strip().lower()
+        if action == 'no':
+            print(Fore.GREEN + f"\nEnjoy your movie picks, {name}! Goodbye!")
+            break
+        elif action == 'yes':
+            rercs = recommend_movies(genre=genre, mood=mood, rating=rating, top_n=5)
+            if isinstance(recs, str):
+                print(Fore.RED + recs + "\n")
+            else:
+                display_recommendations(recs, name)
+        else:
+            print(Fore.RED + "Invalid input. Please try again.\n")
    
 # Main program 
 def main():
