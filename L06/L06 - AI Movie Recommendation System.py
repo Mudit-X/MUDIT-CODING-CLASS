@@ -36,7 +36,7 @@ def recommend_movies(genre=None, mood=None, rating=None, top_n=5):
     if genre:
         filtered_df = filtered_df[filtered_df['Genre'].str.contains(genre, case=False, na=False)]
     if rating:
-        filtered_df = filtered_df[filtered_df['IMDB_Rating'].= rating]
+        filtered_df = filtered_df[filtered_df['IMDB_Rating'] >= rating]
 
     filtered_df = filtered_df.sample(frac=1).reset_index(drop=True) #Randomize the order
 
