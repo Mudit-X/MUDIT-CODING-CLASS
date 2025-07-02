@@ -26,7 +26,7 @@ cosine_sim = cosine_similarity(tfidf_matrix, tfidf_matrix)
 
 # List all unique genres
 def list_genres(df):
-    return sorted(set(genre.strip() for sublist in df['Genre'].dropnna().str.split(', ') for genre in sublist))
+    return sorted(set(genre.strip() for sublist in df['Genre'].dropna().str.split(', ') for genre in sublist))
 
 genres = list_genres(movies_df)
 
@@ -119,7 +119,7 @@ def handle_ai(name):
         display_recommendations(recs, name)
 
     while True:
-        action == input(Fore.YELLOW + "\nWould you like more recommendations? (yes/no): ").strip().lower()
+        action = input(Fore.YELLOW + "\nWould you like more recommendations? (yes/no): ").strip().lower()
         if action == 'no':
             print(Fore.GREEN + f"\nEnjoy your movie picks, {name}! Goodbye!")
             break
