@@ -4,6 +4,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 from textblob import TextBlob
 from colorama import init, Fore
 import time
+import sys
 
 # Initialize colorama
 init(autoreset=True)
@@ -71,8 +72,8 @@ def handle_ai(name):
     print(Fore.BLUE + "\n Let's find the perfect movie for you!\n")
 
     # Show genres in a single line
-    print(Fore.GREEN + "Availablel genres: ", end="")
-    for idx, genere in enumerate(genres, 1):
+    print(Fore.GREEN + "Availablel Genres: ", end="")
+    for idx, genre in enumerate(genres, 1):
         print(f"{Fore.CYAN}{idx}. {genre}")
     print() # To move to the next line after all genres are listed
 
