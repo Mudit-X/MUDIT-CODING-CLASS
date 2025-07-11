@@ -1,8 +1,9 @@
 import cv2
-import numpy as mp
+import numpy as np
 from tensorflow.keras.models import load_model
 
-face_cascade_path = r'C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\cv2\data\haarcascade_frontalface_default.xml'
+face_cascade_path = '"C:\Users\Admin\AppData\Local\Programs\Python\Python310\Lib\site-packages\cv2\data\haarcascade_frontalface_default.xml"'
+face_cascade = cv2.CascadeClassifier(face_cascade_path)
 face_cascade = cv2.CascadeClassifier(face_cascade_path)
 if face_cascade.empty():
     print(f"ERROR: Could not load face cascade XML file from {face_cascade_path}")
