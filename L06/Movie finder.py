@@ -44,13 +44,18 @@ def recommend_movies(genre=None, mood=None, rating=None, top_n=5):
     filtered_df = filtered_df.sample(frac=1).reset_index(drop=True)  # Shuffle
 
     recommendations = []
+    user_mood_polarity = TextBlob(mood).sentiment.polarity if mood else 0
+
     for _, row in filtered_df.iterrows():
         overview = row['Overview']
         if pd.isna(overview):
             continue
         polarity = TextBlob(overview).sentiment.polarity
-        if (mood and (TextBlob(mood).sentiment.polarity < 0 and polarity > 0)) or not mood:
+
+        # New logic: Match sentiment direction or if no mood specified
+        if not mood or (user_mood_polarity * polarity >= 0):
             recommendations.append((row['Series_Title'], polarity))
+
         if len(recommendations) == top_n:
             break
 
