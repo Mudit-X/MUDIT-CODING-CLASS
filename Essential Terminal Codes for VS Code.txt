@@ -1,0 +1,26 @@
+# Create and enter a project folder
+mkdir your_project && cd your_project
+
+# Create a virtual environment
+python -m venv .venv
+
+# Activate the virtual environment
+# Windows:
+.venv\Scripts\activate
+# Mac/Linux:
+# source .venv/bin/activate
+
+# Upgrade pip and core build tools
+pip install --upgrade pip setuptools wheel
+
+# Install essential packages (customize as needed)
+pip install opencv-python mediapipe pyautogui numpy
+
+# (Optional) Save installed packages to requirements.txt
+pip freeze > requirements.txt
+
+# Run your Python script
+python your_script.py
+
+# Deactivate virtual environment when done
+deactivate
