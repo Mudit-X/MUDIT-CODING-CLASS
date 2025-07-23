@@ -96,6 +96,8 @@ while True:
             cv2.imwrite(f"picture_{int(time.time())}.jpg",
             img)
             print("Picture saved!")
+
+            
             # Change filter: Thumb touches any other finger
             elif (abs(thumb_x middle_x) < 30 and abs (thumb_y middle_y) < 30) or \
             (abs(thumb_x ring_x) < 30 and abs (thumb_y
