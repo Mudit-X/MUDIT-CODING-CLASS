@@ -1,5 +1,5 @@
 import requests
-from config import HF_API_KEY
+from config_1 import HF_API_KEY
 from colorama import Fore, Style, init
 
 # Initialize colorama for colored terminal output
