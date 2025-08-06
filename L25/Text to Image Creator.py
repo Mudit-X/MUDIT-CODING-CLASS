@@ -1,7 +1,7 @@
 import requests
 from PIL import Image
 from io import BytesIO
-from config_2 import HF_API_KEY
+from config_3 import HF_API_KEY
 
 # API endpoint
 API_URL = "https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-3-medium-diffusers"
