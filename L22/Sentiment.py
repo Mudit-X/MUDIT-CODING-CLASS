@@ -1,5 +1,5 @@
 import requests
-from config import HF_API_KEY
+from config_4 import HF_API_KEY
 
 def classify_text(text):
     API_URL = "https://api-inference.huggingface.co/models/distilbert-base-uncased-finetuned-sst-2-english"
